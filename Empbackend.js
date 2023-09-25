@@ -148,6 +148,7 @@ app.get("/empapp/empbills/:empuserid", function (req, res) {
   let empid = +req.params.empuserid;
   let ind = users.findIndex((obj) => +obj.empuserid === empid);
   let dispArr = users[ind].bills;
+  dispArr.sort((a, b) => a.id - b.id);
   let page = +req.query.page;
   page = isNaN(page) ? 1 : page;
   //have to add pagination
