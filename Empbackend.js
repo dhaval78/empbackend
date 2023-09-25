@@ -144,7 +144,30 @@ app.post("/empapp/loginuser", function (req, res) {
     res.send(obj);
   }
 });
-
+app.get("/empapp/empbills/:empuserid", function (req, res) {
+  let empid = +req.params.empuserid;
+  let ind = users.findIndex((obj) => +obj.empuserid === empid);
+  let dispArr = users[ind].bills;
+  let page = +req.query.page;
+  page = isNaN(page) ? 1 : page;
+  //have to add pagination
+  let respArr = pagination(dispArr, page);
+  let len = dispArr.length;
+  let quo = Math.floor(len / 10);
+  let rem = len % 10;
+  let extra = rem === 0 ? 0 : 1;
+  let numofpages = quo + extra;
+  let pageInfo = {
+    pageNumber: page,
+    numberOfPages: numofpages,
+    numOfItems: 10,
+    totalItemCount: dispArr.length,
+  };
+  res.json({
+    data: respArr,
+    pageInfo: pageInfo,
+  });
+});
 
 app.post("/empapp/emps", function (req, res) {
   let body = { empuserid: users.length + 1, ...req.body };
