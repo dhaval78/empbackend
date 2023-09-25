@@ -2,5 +2,24 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.18.2"
-  }
+  },
+  "name": "empbackend",
+  "version": "1.0.0",
+  "main": "Empbackend.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"node Empbackend.js" 
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dhaval78/empbackend.git"
+  },
+  "author": "dhaval",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dhaval78/empbackend/issues"
+  },
+  "homepage": "https://github.com/dhaval78/empbackend#readme",
+  "description": ""
 }
